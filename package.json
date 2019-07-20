@@ -1,14 +1,21 @@
 {
   "name": "vue-animatecss",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "files": [
+    "dist/*",
+    "src/*",
+    "*.json",
+    "*.js"
+  ],
+  "main": "./dist/vue-animatecss.umd.js",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "build-lib": "vue-cli-service build --target lib --name vue-animatecss ./src/components/VueAnimatecss.vue"
   },
-  "dependencies": {
-    "core-js": "^2.6.5",
-    "vue": "^2.6.10"
+  "peerDependencies": {
+    "vue": "^2.6.10",
+    "animate.css": "^3.7.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.9.0",
