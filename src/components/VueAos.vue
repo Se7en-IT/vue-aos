@@ -1,0 +1,59 @@
+<script>
+function animateCSS (node, animationClass) {
+  animationClass = animationClass.split(' ')
+  node.classList.add(...animationClass)
+
+  function handleAnimationEnd () {
+    node.classList.remove(...animationClass)
+    node.removeEventListener('animationend', handleAnimationEnd)
+  }
+
+  node.addEventListener('animationend', handleAnimationEnd)
+}
+
+export default {
+  name: 'vue-aos',
+  props: {
+    threshold: {
+      type: Number,
+      default: 0.5
+    },
+    root: {
+      type: HTMLElement,
+      default: () => null
+    },
+    rootMargin: {
+      type: String,
+      default: () => '0px 0px 0px 0px'
+    },
+    animationClass: {
+      type: String,
+      required: true
+    }
+  },
+  mounted: function () {
+    let el = this.$slots.default[0].elm
+    el.style.visibility = 'hidden'
+    this.observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.style.visibility = 'visible'
+          animateCSS(entry.target, this.animationClass)
+          observer.unobserve(entry.target)
+        }
+      })
+    }, {
+      threshold: this.threshold,
+      root: this.root,
+      rootMargin: this.rootMargin
+    })
+    this.observer.observe(el)
+  },
+  destroyed: function () {
+    this.observer.disconnect()
+  },
+  render: function () {
+    return this.$slots.default ? this.$slots.default[0] : null
+  }
+}
+</script>
