@@ -1,11 +1,14 @@
 <script>
-function animateCSS (node, animationClass) {
+function animateCSS (node, animationClass, callback) {
   animationClass = animationClass.split(' ')
   node.classList.add(...animationClass)
 
   function handleAnimationEnd () {
     node.classList.remove(...animationClass)
     node.removeEventListener('animationend', handleAnimationEnd)
+    if(callback){
+      callback()
+    }
   }
 
   node.addEventListener('animationend', handleAnimationEnd)
@@ -31,14 +34,17 @@ export default {
       required: true
     }
   },
-  mounted: function () {
+  mounted() {
     let el = this.$slots.default[0].elm
     el.style.visibility = 'hidden'
     this.observer = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.style.visibility = 'visible'
-          animateCSS(entry.target, this.animationClass)
+          this.$emit('animationstart')
+          animateCSS(entry.target, this.animationClass, () => {
+            this.$emit('animationend')
+          })
           observer.unobserve(entry.target)
         }
       })
@@ -49,10 +55,10 @@ export default {
     })
     this.observer.observe(el)
   },
-  destroyed: function () {
+  destroyed () {
     this.observer.disconnect()
   },
-  render: function () {
+  render () {
     return this.$slots.default ? this.$slots.default[0] : null
   }
 }
