@@ -1,6 +1,11 @@
 {
   "name": "vue-aos",
   "description": "A Vue component to add \"animation on scroll\" to a Vue component or HTML element",
+  "author": "Seven <info@lucamusolino.it> (https://lucamusolino.it)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Se7en-IT/vue-aos.git"
+  },
   "version": "1.0.0",
   "files": [
     "dist/*",
@@ -21,5 +26,6 @@
     "@vue/cli-plugin-babel": "^3.9.0",
     "@vue/cli-service": "^3.9.0",
     "vue-template-compiler": "^2.6.10"
-  }
+  },
+  "license": "ISC"
 }
