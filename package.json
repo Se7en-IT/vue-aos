@@ -1,5 +1,6 @@
 {
   "name": "vue-aos",
+  "description": "A Vue component to add \"animation on scroll\" to a Vue component or HTML element",
   "version": "1.0.0",
   "files": [
     "dist/*",

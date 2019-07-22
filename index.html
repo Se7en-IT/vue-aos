@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Vue Aos</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magic/1.1.0/magic.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/0.7.4/tailwind.min.css"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+        <script src="dist/vue-aos.umd.js"></script>
+    </head>
+    <body>
+        <div id="app" class="container mx-auto pt-10">
+            <vue-aos animation-class="bounceInLeft animated">
+                <h2 class="text-center mb-32">Vue AOS</h2>
+            </vue-aos>
+            <vue-aos animation-class="bounceInRight animated">
+                <div class="mb-32 text-center">
+                    A Vue component to add Animation on scroll to a Vue component or HTML element.
+                </div>
+            </vue-aos>
+            <vue-aos animation-class="infinite animated tada">
+                <div class="mb-32 py-32 text-center text-blue">
+                    Scroll down
+                    <div>
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAAG0lEQVR42mNgwAfKy8v/48I4FeA0AacVDFQBAP9wJkE/KhUMAAAAAElFTkSuQmCC">
+                    </div>
+                </div>
+            </vue-aos>
+            <h2 class="mb-10">
+                Use with
+                <a href="https://github.com/daneden/animate.css" target="_blank">Animatecss Effect</a>
+            </h2>
+            <div class="flex flex-wrap -mx-16">
+                    <div class="w-full md:w-1/2 my-24 px-16" v-for="item in animateCss">
+                        <vue-aos :animation-class="item.class + ' animated'" :threshold="item.threshold">
+                            <div class="bg-red px-10 py-16 text-center">
+                                {{item.class}} threshold: {{item.threshold}}
+                            </div>
+                        </vue-aos>
+                    </div>
+            </div>
+            <h2 class="mb-10">
+                Use with
+                <a href="https://github.com/miniMAC/magic">Magic Effect</a>
+            </h2>
+            <div class="flex flex-wrap -mx-16">
+                <div class="w-full md:w-1/2 px-16 my-24" v-for="item in magicCss">
+                    <vue-aos :animation-class="item.class + ' magictime'" :threshold="item.threshold">
+                        <div class="bg-red px-10 py-16 text-center">
+                            {{item.class}} threshold: {{item.threshold}}
+                        </div>
+                    </vue-aos>
+                </div>
+            </div>
+        </div>
+        <script>
+            new Vue({
+                components:{
+                    VueAos: window['vue-aos']
+                },
+                el:'#app',
+                data: function(){
+                    return {
+                        animateCss: [{
+                            "class":"fadeInDownBig",
+                            "threshold": 0.5                          
+                        }, {
+                            "class": "fadeInUpBig",
+                            "threshold": 0.5
+                        }, {
+                            "class": "rotateInDownLeft",
+                            "threshold": 0
+                        }, {
+                            "class": "rotateInDownRight",
+                            "threshold": 0.5
+                        }, {
+                            "class": "zoomInLeft",
+                            "threshold": 0
+                        }, {
+                            "class": "zoomInRight",
+                            "threshold": 1
+                        }],
+                        magicCss: [{
+                            "class": "twisterInDown",
+                            "threshold": 0.5
+                        }, {
+                            "class": "twisterInUp",
+                            "threshold": 0.5
+                        }, {
+                            "class": "puffIn",
+                            "threshold": 0
+                        }, {
+                            "class": "vanishIn",
+                            "threshold": 0.5
+                        }, {
+                            "class": "openDownLeftRetourn",
+                            "threshold": 0
+                        }, {
+                            "class": "openDownRightRetourn",
+                            "threshold": 1
+                        }, {
+                            "class": "perspectiveLeftRetourn",
+                            "threshold": 0
+                        }, {
+                            "class": "perspectiveRightRetourn",
+                            "threshold": 1
+                        }, {
+                            "class": "swashIn",
+                            "threshold": 0
+                        }, {
+                            "class": "foolishIn",
+                            "threshold": 1
+                        }]
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
