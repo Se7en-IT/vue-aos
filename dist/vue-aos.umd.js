@@ -3006,8 +3006,7 @@ function animateCSS(node, animationClass, callback) {
       }
     },
     animationClass: {
-      type: String,
-      required: true
+      type: String
     }
   },
   mounted: function mounted() {
@@ -3020,11 +3019,14 @@ function animateCSS(node, animationClass, callback) {
         if (entry.isIntersecting) {
           entry.target.style.visibility = 'visible';
 
-          _this.$emit('animationstart');
+          _this.$emit('animationstart', entry);
 
-          animateCSS(entry.target, _this.animationClass, function () {
-            _this.$emit('animationend');
-          });
+          if (_this.animationClass) {
+            animateCSS(entry.target, _this.animationClass, function () {
+              _this.$emit('animationend', entry);
+            });
+          }
+
           observer.unobserve(entry.target);
         }
       });
