@@ -69,7 +69,7 @@ This means that it's basically a "decorator". A component which does not output 
 
 | Property   | Type        | Default           | Required | Description                              |
 | ---------- | ----------- | ----------------- | -------- | ---------------------------------------- |
-| animation-class | String | '' | *yes* | CSS animation class
+| animation-class | String | '' | *no* | CSS animation class
 | threshold  | String       | 0.5          | *no*     | [MDN docs](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#Intersection_observer_options) |
 | root       | HTMLElement | null              | *no*     | [MDN docs](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#Intersection_observer_options) |
 | rootMargin | String      | *0px 0px 0px 0px* | *no*     | [MDN docs](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#Intersection_observer_options) |
@@ -80,8 +80,8 @@ This means that it's basically a "decorator". A component which does not output 
 
 | Name       | Arguments                                | Description                              |
 | ---------- | ---------------------------------------- | ---------------------------------------- |
-| **animationstart**  |  | Event fired when animation start |
-| **animationend**  |  | Event fired when animation end |
+| **animationstart**  | [*IntersectionObserverEntry*](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserverEntry) | Event fired when animation start |
+| **animationend**  | [*IntersectionObserverEntry*](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserverEntry) | Event fired when animation end |
 
 ## Polyfill
 

@@ -30,8 +30,7 @@ export default {
       default: () => '0px 0px 0px 0px'
     },
     animationClass: {
-      type: String,
-      required: true
+      type: String
     }
   },
   mounted() {
@@ -41,10 +40,12 @@ export default {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.style.visibility = 'visible'
-          this.$emit('animationstart')
-          animateCSS(entry.target, this.animationClass, () => {
-            this.$emit('animationend')
-          })
+          this.$emit('animationstart', entry)
+          if(this.animationClass){
+            animateCSS(entry.target, this.animationClass, () => {
+              this.$emit('animationend', entry)
+            })
+          }
           observer.unobserve(entry.target)
         }
       })
