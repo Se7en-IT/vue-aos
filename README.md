@@ -69,6 +69,7 @@ This means that it's basically a "decorator". A component which does not output 
 
 | Property   | Type        | Default           | Required | Description                              |
 | ---------- | ----------- | ----------------- | -------- | ---------------------------------------- |
+| visibility | String | 'hidden' | *no* | Visibility start state
 | animation-class | String | '' | *no* | CSS animation class
 | threshold  | String       | 0.5          | *no*     | [MDN docs](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#Intersection_observer_options) |
 | root       | HTMLElement | null              | *no*     | [MDN docs](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#Intersection_observer_options) |

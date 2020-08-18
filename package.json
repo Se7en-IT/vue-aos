@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/Se7en-IT/vue-aos.git"
   },
-  "version": "1.0.1",
+  "version": "1.1.0",
   "files": [
     "dist/*",
     "src/*",
@@ -23,9 +23,9 @@
     "vue": "^2.6.10"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.9.0",
-    "@vue/cli-service": "^3.9.0",
-    "vue-template-compiler": "^2.6.10"
+    "@vue/cli-plugin-babel": "^3.12.1",
+    "@vue/cli-service": "^3.12.1",
+    "vue-template-compiler": "^2.6.11"
   },
   "license": "ISC"
 }

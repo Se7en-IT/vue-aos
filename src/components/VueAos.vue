@@ -31,11 +31,15 @@ export default {
     },
     animationClass: {
       type: String
+    },
+    visibility: {
+      type: String,
+      default: 'hidden'
     }
   },
   mounted() {
     let el = this.$slots.default[0].elm
-    el.style.visibility = 'hidden'
+    el.style.visibility = this.visibility
     this.observer = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
