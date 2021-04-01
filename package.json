@@ -13,7 +13,7 @@
     "*.json",
     "*.js"
   ],
-  "main": "./dist/vue-aos.umd.js",
+  "main": "./dist/VueAos.umd.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
