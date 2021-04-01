@@ -37,13 +37,19 @@ npm install vue-aos --save
 yarn add vue-aos
 ```
 
-
+```js
+import Vue from 'vue'
+import VueAos from 'vue-aos'
+Vue.use(VueAos)
+```
 
 ## Usage
 
 The package acts as an abstract component, much like what you may know from [keep-alive](https://vuejs.org/v2/api/#keep-alive) or [transition](https://vuejs.org/v2/api/#transition).
 
 This means that it's basically a "decorator". A component which does not output any markup to the DOM, but adds the functionality under the hood 😱.
+
+**Add directive version with same props**
 
 #### .vue
 
@@ -52,15 +58,8 @@ This means that it's basically a "decorator". A component which does not output 
   <vue-aos animation-class="fadeIn animated">
     <div>{{ msg }}</div>
   </vue-aos>
+  <div v-vue-aos="{animationClass:'fadeIn animated'}">{{ msg }}</div>
 </template>
-
-<script>
-  import VueAos from 'vue-aos'
-
-  export default {
-    components: { VueAos }
-  }
-</script>
 ```
 
 

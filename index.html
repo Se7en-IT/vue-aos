@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/0.7.4/tailwind.min.css"/>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
-        <script src="dist/vue-aos.umd.js"></script>
+        <script src="dist/VueAos.umd.js"></script>
     </head>
     <body>
         <div id="app" class="container mx-auto pt-10">
@@ -20,14 +20,12 @@
                     A Vue component to add Animation on scroll to a Vue component or HTML element.
                 </div>
             </vue-aos>
-            <vue-aos animation-class="infinite animated tada">
-                <div class="mb-32 py-32 text-center text-blue">
-                    Scroll down
-                    <div>
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAAG0lEQVR42mNgwAfKy8v/48I4FeA0AacVDFQBAP9wJkE/KhUMAAAAAElFTkSuQmCC">
-                    </div>
+            <div class="mb-32 py-32 text-center text-blue" v-vue-aos='{animationClass:"infinite animated tada"}'>
+                Scroll down
+                <div>
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAAG0lEQVR42mNgwAfKy8v/48I4FeA0AacVDFQBAP9wJkE/KhUMAAAAAElFTkSuQmCC">
                 </div>
-            </vue-aos>
+            </div>
             <h2 class="mb-10">
                 Use with
                 <a href="https://github.com/daneden/animate.css" target="_blank">Animatecss Effect</a>
@@ -56,10 +54,8 @@
             </div>
         </div>
         <script>
+            Vue.use(window['VueAos'])
             new Vue({
-                components:{
-                    VueAos: window['vue-aos']
-                },
                 el:'#app',
                 data: function(){
                     return {

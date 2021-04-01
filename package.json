@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/Se7en-IT/vue-aos.git"
   },
-  "version": "1.1.0",
+  "version": "2.0.0",
   "files": [
     "dist/*",
     "src/*",
@@ -17,7 +17,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "build-lib": "vue-cli-service build --target lib --name vue-aos ./src/components/VueAos.vue"
+    "build-lib": "vue-cli-service build --target lib --name VueAos ./src/plugin.js"
   },
   "peerDependencies": {
     "vue": "^2.6.10"
