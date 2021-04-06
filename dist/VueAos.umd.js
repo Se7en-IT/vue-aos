@@ -91,7 +91,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "fae3");
+/******/ 	return __webpack_require__(__webpack_require__.s = "fb15");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3898,15 +3898,12 @@ module.exports = document && document.documentElement;
 
 /***/ }),
 
-/***/ "fae3":
+/***/ "fb15":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, "install", function() { return /* reexport */ install; });
 
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/setPublicPath.js
 // This file is imported into lib/wc client bundles.
@@ -4050,15 +4047,22 @@ var es6_regexp_split = __webpack_require__("28a5");
     },
     animationClass: {
       type: String
+    },
+    visibility: {
+      type: String,
+      default: 'hidden'
     }
   },
   mounted: function mounted() {
     var _this = this;
 
     var el = this.$slots.default[0].elm;
+    el.style.visibility = this.visibility;
     this.observer = new IntersectionObserver(function (entries, observer) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
+          entry.target.style.visibility = 'visible';
+
           _this.$emit('animationstart', entry);
 
           if (_this.animationClass) {
@@ -4102,9 +4106,12 @@ var es6_map = __webpack_require__("f400");
 var mapElement = new Map();
 /* harmony default export */ var directive_VueAos = ({
   bind: function bind(el, binding) {
+    el.style.visibility = binding.value.visibility || 'hidden';
     var observer = new IntersectionObserver(function (entries, observer) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
+          entry.target.style.visibility = 'visible';
+
           if (binding.value.animationClass) {
             utils.animateCSS(entry.target, binding.value.animationClass);
           }
@@ -4132,8 +4139,10 @@ function install(Vue, options) {
   Vue.component('vue-aos', VueAos);
   Vue.directive('vue-aos', directive_VueAos);
 }
-// CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib-no-default.js
+// CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
 
+
+/* harmony default export */ var entry_lib = __webpack_exports__["default"] = (install);
 
 
 

@@ -3,9 +3,11 @@ import utils from '../utils.js'
 const mapElement = new Map();
 export default {
   bind(el, binding) {
+    el.style.visibility = binding.value.visibility || 'hidden'
     const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
+          entry.target.style.visibility = 'visible'
           if (binding.value.animationClass) {
             utils.animateCSS(entry.target, binding.value.animationClass)
           }

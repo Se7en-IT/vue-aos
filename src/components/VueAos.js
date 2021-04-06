@@ -17,13 +17,19 @@ export default {
     },
     animationClass: {
       type: String
+    },
+    visibility: {
+      type: String,
+      default: 'hidden'
     }
   },
   mounted() {
     let el = this.$slots.default[0].elm
+    el.style.visibility = this.visibility
     this.observer = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
+          entry.target.style.visibility = 'visible'
           this.$emit('animationstart', entry)
           if (this.animationClass) {
             utils.animateCSS(entry.target, this.animationClass, () => {
