@@ -39,7 +39,7 @@ yarn add vue-aos
 
 ```js
 import Vue from 'vue'
-import VueAos from 'vue-aos'
+import * as VueAos from 'vue-aos'
 Vue.use(VueAos)
 ```
 

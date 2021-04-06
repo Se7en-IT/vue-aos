@@ -6,14 +6,14 @@
     "type": "git",
     "url": "https://github.com/Se7en-IT/vue-aos.git"
   },
-  "version": "2.0.0",
+  "version": "2.0.1",
   "files": [
     "dist/*",
     "src/*",
     "*.json",
     "*.js"
   ],
-  "main": "./dist/vue-aos.umd.js",
+  "main": "./dist/VueAos.umd.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
