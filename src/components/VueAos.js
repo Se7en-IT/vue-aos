@@ -31,11 +31,9 @@ export default {
         if (entry.isIntersecting) {
           entry.target.style.visibility = 'visible'
           this.$emit('animationstart', entry)
-          if (this.animationClass) {
-            utils.animateCSS(entry.target, this.animationClass, () => {
-              this.$emit('animationend', entry)
-            })
-          }
+          this.animationClass &&  utils.animateCSS(entry.target, this.animationClass, () => {
+            this.$emit('animationend', entry)
+          })
           observer.unobserve(entry.target)
         }
       })

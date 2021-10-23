@@ -8,9 +8,10 @@ export default {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.style.visibility = 'visible'
-          if (binding.value.animationClass) {
-            utils.animateCSS(entry.target, binding.value.animationClass)
-          }
+          binding.value.animationstart && binding.value.animationstart(entry)
+          binding.value.animationClass && utils.animateCSS(entry.target, binding.value.animationClass, () => {
+            binding.value.animationend && binding.value.animationend(entry)
+          })
           observer.unobserve(entry.target)
         }
       })

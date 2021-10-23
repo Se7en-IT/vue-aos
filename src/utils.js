@@ -6,9 +6,7 @@ export default {
         function handleAnimationEnd() {
             node.classList.remove(...animationClass)
             node.removeEventListener('animationend', handleAnimationEnd)
-            if (callback) {
-                callback()
-            }
+            callback && callback()
         }
 
         node.addEventListener('animationend', handleAnimationEnd)

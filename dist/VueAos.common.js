@@ -4004,10 +4004,7 @@ var es6_regexp_split = __webpack_require__("28a5");
       (_node$classList2 = node.classList).remove.apply(_node$classList2, _toConsumableArray(animationClass));
 
       node.removeEventListener('animationend', handleAnimationEnd);
-
-      if (callback) {
-        callback();
-      }
+      callback && callback();
     }
 
     node.addEventListener('animationend', handleAnimationEnd);
@@ -4056,12 +4053,9 @@ var es6_regexp_split = __webpack_require__("28a5");
 
           _this.$emit('animationstart', entry);
 
-          if (_this.animationClass) {
-            utils.animateCSS(entry.target, _this.animationClass, function () {
-              _this.$emit('animationend', entry);
-            });
-          }
-
+          _this.animationClass && utils.animateCSS(entry.target, _this.animationClass, function () {
+            _this.$emit('animationend', entry);
+          });
           observer.unobserve(entry.target);
         }
       });
@@ -4102,11 +4096,10 @@ var mapElement = new Map();
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           entry.target.style.visibility = 'visible';
-
-          if (binding.value.animationClass) {
-            utils.animateCSS(entry.target, binding.value.animationClass);
-          }
-
+          binding.value.animationstart && binding.value.animationstart(entry);
+          binding.value.animationClass && utils.animateCSS(entry.target, binding.value.animationClass, function () {
+            binding.value.animationend && binding.value.animationend(entry);
+          });
           observer.unobserve(entry.target);
         }
       });
