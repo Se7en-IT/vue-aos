@@ -1,5 +1,15 @@
 # Vue Aos
-**A Vue component to add Animation on scroll to a Vue component or HTML element.**
+**A Vue directive to add Animation on scroll to a HTML element.**
+
+## Breaking changes
+
+* remove component version (useless)
+* remove visibility props 
+* threshold default value to 0 
+* add .once modifiers
+* add css variable --isIntersecting (1|0)
+* add selector properties for apply IntersectionObserver to children selector (example: v-vue-aos="{selector: 'li'}")
+
 
 ## Table of content
 
@@ -45,46 +55,36 @@ Vue.use(VueAos)
 
 ## Usage
 
-The package acts as an abstract component, much like what you may know from [keep-alive](https://vuejs.org/v2/api/#keep-alive) or [transition](https://vuejs.org/v2/api/#transition).
-
-This means that it's basically a "decorator". A component which does not output any markup to the DOM, but adds the functionality under the hood 😱.
-
-**Add directive version with same props**
-
 #### .vue
 
 ```html
 <template>
-  <vue-aos animation-class="fadeIn animated">
-    <div>{{ msg }}</div>
-  </vue-aos>
-  <div v-vue-aos="{animationClass:'fadeIn animated'}">{{ msg }}</div>
+  <main>
+    <div v-vue-aos="{animationClass:'fadeIn animated'}">{{ msg }}</div>
+    <div v-vue-aos.once="{animationClass:'fadeIn animated'}">{{ msg }}</div>
+  </main>
 </template>
 ```
-
 
 
 ## Properties
 
 | Property   | Type        | Default           | Required | Description                              |
 | ---------- | ----------- | ----------------- | -------- | ---------------------------------------- |
-| visibility | String | 'hidden' | *no* | Visibility start state
 | animationClass | String | '' | *no* | CSS animation class
-| threshold  | String       | 0.5          | *no*     | [MDN docs](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#Intersection_observer_options) |
+| threshold  | Number       | 0          | *no*     | [MDN docs](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#Intersection_observer_options) |
 | root       | HTMLElement | null              | *no*     | [MDN docs](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#Intersection_observer_options) |
 | rootMargin | String      | *0px 0px 0px 0px* | *no*     | [MDN docs](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#Intersection_observer_options) |
-
-
-
-## Events
-
-| Name       | Arguments                                | Description                              |
-| ---------- | ---------------------------------------- | ---------------------------------------- |
+| selector | String | 'li' | *no* | Apply to query selector
 | **animationstart**  | [*IntersectionObserverEntry*](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserverEntry) | Event fired when animation start |
 | **animationend**  | [*IntersectionObserverEntry*](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserverEntry) | Event fired when animation end |
 
-## Polyfill
 
-The IntersectionObserver API is not currently available in all browsers ([IE11, Safari and iOS Safari](http://caniuse.com/#feat=intersectionobserver)). If you intend to support these browsers, you'll need to add a poylfill to your bundle.
+## Modifiers
 
-[WICG IntersectionObserver Polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill) is highly recommended.
+| once | boolean | false | *no* | Once time animation.
+
+
+When HTML element "isIntersecting", the directive set on element a css variable --isIntersect to 1 otherwise to 0.
+It is useful when you want to use transition animation. Thanks to (https://twitter.com/jh3yy/status/1558551933064884225?t=JxoTN-eGP-EkmAkDcdreeg&s=08)
+

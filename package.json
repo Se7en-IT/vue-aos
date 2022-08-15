@@ -1,12 +1,12 @@
 {
   "name": "vue-aos",
-  "description": "A Vue component to add \"animation on scroll\" to a Vue component or HTML element",
+  "description": "A Vue directive to add Animation on scroll to a HTML element.",
   "author": "Seven <info@lucamusolino.it> (https://lucamusolino.it)",
   "repository": {
     "type": "git",
     "url": "https://github.com/Se7en-IT/vue-aos.git"
   },
-  "version": "2.3.0",
+  "version": "3.0.0",
   "files": [
     "dist/*",
     "src/*",

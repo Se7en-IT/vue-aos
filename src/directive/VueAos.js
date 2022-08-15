@@ -1,29 +1,50 @@
 import utils from '../utils.js'
 
-const mapElement = new Map();
+const mapElement = new Map()
 export default {
   bind(el, binding) {
-    el.style.visibility = binding.value.visibility || 'hidden'
-    const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.style.visibility = 'visible'
-          binding.value.animationstart && binding.value.animationstart(entry)
-          binding.value.animationClass && utils.animateCSS(entry.target, binding.value.animationClass, () => {
-            binding.value.animationend && binding.value.animationend(entry)
-          })
-          observer.unobserve(entry.target)
-        }
-      })
-    }, {
-      threshold: binding.value.threshold || 0.5,
-      root: binding.value.root,
-      rootMargin: binding.value.rootMargin || '0px 0px 0px 0px'
+    const {
+      selector,
+      animationstart,
+      animationend,
+      animationClass,
+      root,
+      rootMargin,
+      threshold,
+    } = binding.value
+    const observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          entry.target.style.setProperty(
+            '--isIntersecting',
+            entry.isIntersecting ? 1 : 0
+          )
+          if (entry.isIntersecting) {
+            animationstart && animationstart(entry)
+            animationClass &&
+              utils.animateCSS(entry.target, animationClass, () => {
+                animationend && animationend(entry)
+              })
+            if (binding.modifiers.once) {
+              observer.unobserve(entry.target)
+            }
+          }
+        })
+      },
+      {
+        threshold: threshold || 0,
+        root: root,
+        rootMargin: rootMargin || '0px 0px 0px 0px',
+      }
+    )
+    const els = selector ? el.querySelectorAll(selector) : [el]
+    els.forEach((element) => {
+      observer.observe(element)
     })
-    observer.observe(el)
     mapElement.set(el, observer)
   },
   unbind(el) {
     mapElement.get(el).disconnect()
-  }
+    mapElement.delete(el)
+  },
 }
