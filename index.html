@@ -20,7 +20,6 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/0.7.4/tailwind.min.css"
     />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
-    <script src="dist/VueAos.umd.js"></script>
     <style>
       .list li {
         list-style: none;
@@ -98,8 +97,9 @@
         </li>
       </ul>
     </div>
-    <script>
-      Vue.use(window['VueAos'])
+    <script type="module">
+      import VueAos from './dist/vue-aos.js'
+      Vue.use(VueAos)
       new Vue({
         el: '#app',
         data: function() {

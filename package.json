@@ -1,31 +1,33 @@
 {
   "name": "vue-aos",
+  "version": "3.1.0",
   "description": "A Vue directive to add Animation on scroll to a HTML element.",
   "author": "Seven <info@lucamusolino.it> (https://lucamusolino.it)",
   "repository": {
     "type": "git",
     "url": "https://github.com/Se7en-IT/vue-aos.git"
   },
-  "version": "3.0.0",
+  "type": "module",
   "files": [
-    "dist/*",
-    "src/*",
-    "*.json",
-    "*.js"
+    "dist"
   ],
-  "main": "./dist/VueAos.umd.js",
+  "main": "./dist/vue-aos.umd.cjs",
+  "module": "./dist/vue-aos.js",
+  "exports": {
+    ".": {
+      "import": "./dist/vue-aos.js",
+      "require": "./dist/vue-aos.umd.cjs"
+    }
+  },
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "build-lib": "vue-cli-service build --target lib --name VueAos ./src/plugin.js"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "peerDependencies": {
     "vue": "^2.6.10"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.12.1",
-    "@vue/cli-service": "^3.12.1",
-    "vue-template-compiler": "^2.6.11"
-  },
-  "license": "ISC"
+    "vite": "^3.0.9"
+  }
 }

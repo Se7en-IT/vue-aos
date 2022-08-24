@@ -1,4 +1,4 @@
-import utils from '../utils.js'
+import utils from './utils.js'
 
 const mapElement = new Map()
 export default {

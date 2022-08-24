@@ -3,6 +3,7 @@
 
 ## Breaking changes
 
+* use vitejs
 * remove component version (useless)
 * remove visibility props 
 * threshold default value to 0 
@@ -49,7 +50,7 @@ yarn add vue-aos
 
 ```js
 import Vue from 'vue'
-import * as VueAos from 'vue-aos'
+import VueAos from 'vue-aos'
 Vue.use(VueAos)
 ```
 

@@ -1,6 +1,5 @@
-import Vue from 'vue'
-import VueAosDirective from './directive/VueAos.js'
+import VueAosDirective from './directive.js'
 
-export default function install(Vue, options) {
+export default function install(Vue) {
     Vue.directive('vue-aos', VueAosDirective)
 }
